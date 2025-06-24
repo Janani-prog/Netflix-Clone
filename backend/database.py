@@ -27,7 +27,7 @@ class Database:
 
     async def create_indexes(self):
         """Create database indexes for better performance"""
-        if self.database:
+        if self.database is not None:
             # Users collection indexes
             await self.database.users.create_index("email", unique=True)
             await self.database.users.create_index("id", unique=True)
