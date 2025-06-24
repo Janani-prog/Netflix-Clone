@@ -1,3 +1,10 @@
+import sys
+import os
+from pathlib import Path
+
+# Add current directory to Python path
+sys.path.insert(0, str(Path(__file__).parent))
+
 from fastapi import FastAPI, APIRouter, HTTPException, Depends, status, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer
