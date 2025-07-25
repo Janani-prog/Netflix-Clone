@@ -158,7 +158,15 @@ const AuthScreen = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   
-  const { login, register } = useAuth();
+  const { login, register, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -171,6 +179,7 @@ const AuthScreen = () => {
         if (!result.success) {
           setError(result.error);
         }
+        // Navigation will be handled by useEffect when isAuthenticated changes
       } else {
         const result = await register(formData);
         if (result.success) {
