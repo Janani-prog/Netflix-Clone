@@ -757,9 +757,12 @@ const NetflixApp = () => {
         <div className="relative h-screen">
           <div className="absolute inset-0">
             <img
-              src={featuredContent.backdrop_path || featuredContent.poster_path || 'https://via.placeholder.com/1920x1080'}
+              src={featuredContent.backdrop_path || featuredContent.poster_path || 'https://via.placeholder.com/1920x1080/1a1a1a/666666?text=Featured+Content'}
               alt={featuredContent.title}
               className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.src = 'https://via.placeholder.com/1920x1080/1a1a1a/666666?text=Featured+Content';
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
