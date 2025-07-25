@@ -826,10 +826,13 @@ const NetflixApp = () => {
                   whileHover={{ scale: 1.05 }}
                 >
                   <img
-                    src={movie.poster_path || 'https://via.placeholder.com/300x450?text=No+Image'}
+                    src={movie.poster_path || 'https://via.placeholder.com/300x450/1a1a1a/666666?text=No+Image'}
                     alt={movie.title}
                     className="w-full rounded-md group-hover:opacity-80 transition-opacity"
                     onClick={() => handleMovieClick(movie)}
+                    onError={(e) => {
+                      e.target.src = 'https://via.placeholder.com/300x450/1a1a1a/666666?text=No+Image';
+                    }}
                   />
                   <button
                     className="absolute top-2 right-2 bg-black bg-opacity-70 rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
