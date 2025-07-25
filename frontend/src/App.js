@@ -1108,10 +1108,13 @@ const MovieRow = ({ title, movies, onMovieClick, onAddToList, onPlayTrailer, myL
             >
               <div className="relative overflow-hidden rounded-md">
                 <img
-                  src={movie.poster_path || 'https://via.placeholder.com/300x450?text=No+Image'}
+                  src={movie.poster_path || 'https://via.placeholder.com/300x450/1a1a1a/666666?text=No+Image'}
                   alt={movie.title}
                   className="w-full h-36 object-cover transition-all duration-300 group-hover/item:opacity-80"
                   onClick={() => onMovieClick(movie)}
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/300x450/1a1a1a/666666?text=No+Image';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity" />
                 <div className="absolute bottom-2 left-2 right-2 opacity-0 group-hover/item:opacity-100 transition-opacity">
